@@ -1,0 +1,22 @@
+bootJar {
+    enabled = true
+    archivesBaseName = 'service-registry'
+    archiveFileName = 'service-registry.jar'
+    archiveVersion = "0.0.1"
+}
+jar { enabled = false }
+
+ext {
+    set('springCloudVersion', "2021.0.8")
+}
+
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}

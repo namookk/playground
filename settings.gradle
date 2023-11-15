@@ -1,0 +1,6 @@
+rootProject.name = 'playground'
+include 'api-gateway'
+include 'service-registry'
+include 'user-module'
+include 'notice-module'
+include 'coupon-module'
