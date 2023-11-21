@@ -1,5 +1,6 @@
 rootProject.name = 'playground'
 include 'api-gateway'
+include 'auth-server'
 include 'service-registry'
 include 'user-module'
 include 'notice-module'

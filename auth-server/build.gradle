@@ -1,0 +1,23 @@
+bootJar {
+	enabled = true
+	archivesBaseName = 'auth-server'
+	archiveFileName = 'auth-server.jar'
+	archiveVersion = "0.0.1"
+}
+jar { enabled = false }
+
+ext {
+	set('springCloudVersion', "2021.0.8")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server'
+	implementation "org.springframework.security:spring-security-oauth2-authorization-server:1.1.3"
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
