@@ -12,27 +12,6 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
   main:
     allow-bean-definition-overriding: true
-  security:
-    oauth2:
-      authorizationserver:
-        client:
-          playground:
-            registration:
-              client-id: "playground"
-              client-secret: "{noop}secret"
-              client-authentication-methods:
-                - "client_secret_basic"
-              authorization-grant-types:
-                - "authorization_code"
-                - "refresh_token"
-              redirect-uris:
-                - "http://127.0.0.1:8080/login"
-              post-logout-redirect-uris:
-                - "http://127.0.0.1:8080/"
-              scopes:
-                - "openid"
-                - "profile"
-            require-authorization-consent: true
 
 server:
   port: 8432
