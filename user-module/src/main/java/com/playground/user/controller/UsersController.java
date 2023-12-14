@@ -21,9 +21,14 @@ public class UsersController {
     private final Environment env;
     private final MemberService memberService;
 
-    @GetMapping
+    @GetMapping("/test-1")
     public List<Member> getUsers() {
         return memberService.getAllMembers();
+    }
+
+    @GetMapping("/test-2")
+    public List<Member> getUsers2() {
+        return memberService.getAllMembers2();
     }
 
     @GetMapping("/{userId}")
