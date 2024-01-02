@@ -1,6 +1,12 @@
 package com.playground.user.service;
 
+import com.playground.user.payload.domain.ATable;
+import com.playground.user.payload.domain.BTable;
+import com.playground.user.payload.domain.CTable;
 import com.playground.user.payload.domain.Member;
+import com.playground.user.repository.ATableRepository;
+import com.playground.user.repository.BTableRepository;
+import com.playground.user.repository.CTableRepository;
 import com.playground.user.repository.MemberRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +20,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final ATableRepository aTableRepository;
+    private final BTableRepository bTableRepository;
+    private final CTableRepository cTableRepository;
+
     private final int max = 60000;
     private final int MAX_IN_SIZE = 1000;
 
@@ -52,6 +62,15 @@ public class MemberService {
     public List<Member> getAllMembers2() {
         return findByInCondition(getIds(), memberRepository::getAllMembers);
     }
+
+
+    @Transactional
+    public void createData() {
+        aTableRepository.save(new ATable());
+        bTableRepository.save(new BTable());
+        cTableRepository.save(new CTable());
+    }
+
 
     public <T, R> List<R> findByInCondition(List<T> inConditions, Function<List<T>, List<R>> func) {
         List<R> result = new ArrayList<>();

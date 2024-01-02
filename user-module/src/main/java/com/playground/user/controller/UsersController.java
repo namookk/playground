@@ -31,6 +31,12 @@ public class UsersController {
         return memberService.getAllMembers2();
     }
 
+    @GetMapping("/test-3")
+    public String getUsers3() {
+        memberService.createData();
+        return "OK";
+    }
+
     @GetMapping("/{userId}")
     public Long getUserInfo(@PathVariable Long userId) {
         return userId;
