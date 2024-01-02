@@ -18,47 +18,47 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UsersController {
 
-    private final Environment env;
-    private final MemberService memberService;
+  private final Environment env;
+  private final MemberService memberService;
 
-    @GetMapping("/test-1")
-    public List<Member> getUsers() {
-        return memberService.getAllMembers();
-    }
+  @GetMapping("/test-1")
+  public List<Member> getUsers() {
+    return memberService.getAllMembers();
+  }
 
-    @GetMapping("/test-2")
-    public List<Member> getUsers2() {
-        return memberService.getAllMembers2();
-    }
+  @GetMapping("/test-2")
+  public List<Member> getUsers2() {
+    return memberService.getAllMembers2();
+  }
 
-    @GetMapping("/test-3")
-    public String getUsers3() {
-        memberService.createData();
-        return "OK";
-    }
+  @GetMapping("/test-3")
+  public String getUsers3() {
+    memberService.createData();
+    return "OK";
+  }
 
-    @GetMapping("/{userId}")
-    public Long getUserInfo(@PathVariable Long userId) {
-        return userId;
-    }
+  @GetMapping("/{userId}")
+  public Long getUserInfo(@PathVariable Long userId) {
+    return userId;
+  }
 
-    @GetMapping("/test")
-    public DateSerializerTestDto getDateJson(DateSerializerTestDto request) {
-        return DateSerializerTestDto.builder()
-            .date(request.getDate())
-            .build();
-    }
+  @GetMapping("/test")
+  public DateSerializerTestDto getDateJson(DateSerializerTestDto request) {
+    return DateSerializerTestDto.builder()
+        .date(request.getDate())
+        .build();
+  }
 
-    @PostMapping("/test")
-    public DateSerializerTestDto getDateJson2(@RequestBody DateSerializerTestDto request) {
-        return DateSerializerTestDto.builder()
-            .date(request.getDate())
-            .build();
-    }
+  @PostMapping("/test")
+  public DateSerializerTestDto getDateJson2(@RequestBody DateSerializerTestDto request) {
+    return DateSerializerTestDto.builder()
+        .date(request.getDate())
+        .build();
+  }
 
-    @PostMapping("/init")
-    public void init() {
-        memberService.init();
-    }
+  @PostMapping("/init")
+  public void init() {
+    memberService.init();
+  }
 
 }
