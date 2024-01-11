@@ -25,7 +25,7 @@ public class MemberService {
   private final CTableRepository cTableRepository;
 
   private final int max = 60000;
-  private final int MAX_IN_SIZE = 1000;
+  private final int MAX_IN_SIZE = 2095;
 
   @Transactional
   public void init() {
@@ -40,7 +40,7 @@ public class MemberService {
 
   private List<Long> getIds() {
     List<Long> ids = new ArrayList<>();
-    for (long i = 1; i <= 999; i++) {
+    for (long i = 1; i <= 8000; i++) {
       ids.add(i);
     }
     return ids;
@@ -60,7 +60,10 @@ public class MemberService {
 
   @Transactional(readOnly = true)
   public List<Member> getAllMembers2() {
-    return findByInCondition(getIds(), memberRepository::getAllMembers);
+    return findByInCondition(getIds(), ids -> {
+      List<String> emails = List.of("a@a.com", "b@b.com", "c@c.com");
+      return memberRepository.getAllMembers2(ids, emails);
+    });
   }
 
 

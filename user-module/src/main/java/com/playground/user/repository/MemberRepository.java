@@ -5,5 +5,7 @@ import java.util.List;
 
 public interface MemberRepository extends MemberJpaRepository, MemberRepositoryCustom {
 
-    List<Member> findByEmail(String email);
+  List<Member> findByEmail(String email);
+
+  List<Member> findByIdInAndEmailIn(List<Long> ids, List<String> emails);
 }

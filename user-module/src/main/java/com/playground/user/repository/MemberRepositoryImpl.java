@@ -10,12 +10,22 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MemberRepositoryImpl implements MemberRepositoryCustom {
 
-    private final JPAQueryFactory queryFactory;
+  private final JPAQueryFactory queryFactory;
 
-    @Override
-    public List<Member> getAllMembers(List<Long> ids) {
-        return queryFactory.selectFrom(member)
-            .where(member.id.in(ids))
-            .fetch();
-    }
+  @Override
+  public List<Member> getAllMembers(List<Long> ids) {
+    return queryFactory.selectFrom(member)
+        .where(member.id.in(ids))
+        .fetch();
+  }
+
+  @Override
+  public List<Member> getAllMembers2(List<Long> ids, List<String> emails) {
+    return queryFactory.selectFrom(member)
+        .where(
+            member.id.in(ids)
+            , member.email.in(emails)
+        )
+        .fetch();
+  }
 }
