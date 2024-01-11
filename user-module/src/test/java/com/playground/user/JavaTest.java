@@ -23,6 +23,7 @@ public class JavaTest {
     System.out.println(CollectionUtils.isEmpty(list));
     System.out.println(ObjectUtils.isEmpty(emptyList));
     System.out.println(ObjectUtils.isEmpty(list));
+    System.out.println("gg");
   }
 
   @Test
